@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../Context/ThemeContext";
 
-function LoginForm({theme, handleChangeTheme}){
+function LoginForm(){
+  const {theme, handleChangeTheme} = useContext(ThemeContext)
     return(
       <div className={`p-2 ${theme}`}>
         <h1>Login Form</h1>
