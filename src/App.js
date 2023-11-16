@@ -5,8 +5,7 @@ import TodoApp from './components/TodoApp';
 function App() {
   return (
     <div className="container">
-      <BankApp/>
-      {/* <TodoApp/> */}
+      <TodoApp/>
     </div>
   );
 }
