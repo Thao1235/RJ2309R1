@@ -1,19 +1,20 @@
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Products from './components/Products/Products';
-import Recommended from './components/Recommended/Recommended';
-import Sidebar from './components/Sidebar/Sidebar';
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import User from "./components/User";
+
 
 function App() {
   return (
-    <div className='container d-flex'>
-      <Sidebar/>
-      <div className='d-flex flex-column flex-grow-1'>
-        <Navbar />
-        <Recommended />
-        <Products />
-      </div>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/users" element={<User/>}/>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
