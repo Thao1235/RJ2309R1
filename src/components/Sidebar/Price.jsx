@@ -33,10 +33,10 @@ function Price() {
                         <div key={price} className="form-check py-1">
                             <input className="form-check-input" type="radio" name="price"
                                 value={price.value}
-                                defaultChecked={price.name === 'All'}
+                                defaultChecked={price.value === 'All'}
                             />
                             <label 
-                                className={`form-check-label ${price.name === 'All' ? 'text-decoration-underline fw-bolder' : ''}`}
+                                className={`form-check-label ${price.value === 'All' ? 'text-decoration-underline fw-bolder' : ''}`}
                             >
                                 {price.name}
                             </label>
