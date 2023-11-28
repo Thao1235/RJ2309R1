@@ -1,21 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Product from "./Product";
+import { useDispatch, useSelector } from "react-redux";
+import { remainProducts } from "../../redux-toolkit/selectors";
+import { fetchProductThunkAction } from "../../slices/productsSlice";
 
 function Products(){
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchProductThunkAction())
+    },[dispatch])
+    const remainProductList = useSelector(remainProducts)
+    // const productList = useSelector(productListSelector)
+    // const { searchText, recommended, category, color, price} = useSelector((state) => state.filters)
+    // const queryProducts = () => {
+    //     let filtersProduct = [...productList]
+    //     if (searchText) {
+    //         filtersProduct = filtersProduct.filter((p) => p.title.toLowerCase().includes(searchText.toLowerCase()))
+    //     }
+        // if (recommended !== 'All') {
+        //     filtersProduct = filtersProduct.filter((p) => p.company.toLowerCase().includes(recommended.toLowerCase()))
+        // }
+        // if (color !== 'All') {
+        //     filtersProduct = filtersProduct.filter((p) => p.color.toLowerCase().includes(color.toLowerCase()))
+        // }
+        // if (category !== 'All') {
+        //     filtersProduct = filtersProduct.filter((p) => p.category.toLowerCase().includes(category.toLowerCase()))
+        // }
+        // if (price !== '0,0') {
+        //     const [min, max] = price.split(',')
+        //     if (min !== max) {
+        //         filtersProduct = filtersProduct.filter((p) => p.newPrice > Number (min) && p.newPrice < Number(max))
+        //     }
+        //     else{
+        //         filtersProduct = filtersProduct.filter((p) => p.newPrice > Number(min))
+        //     }  
+        // }
+    //     return filtersProduct;      
+    // }
+    // const remainProductList = queryProducts()
     return (
         <div className="py-2 d-flex flex-column justify-content-center">
             <h5>Products</h5>
             <div className="row">
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
-                <Product/>
+                {
+                    remainProductList?.map((product) => (
+                        <Product key={product.id} product={product}/>
+                    ))
+                }
             </div>
         </div>
     )

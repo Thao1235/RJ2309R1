@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layouts/MainLayout";
-import MainLayout from './../layouts/MainLayout';
+import MainLayout from '../layouts/MainLayout';
 
 function CartPage() {
     const dispatch = useDispatch()

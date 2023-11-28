@@ -1,8 +1,8 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
-import Sidebar from './../Sidebar/Sidebar';
-import Recommended from './../Recommended/Recommended';
-import Products from './../Products/Products';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Recommended from '../components/Recommended/Recommended';
+import Products from '../components/Products/Products';
 
 function ShoePage() {
     return (
