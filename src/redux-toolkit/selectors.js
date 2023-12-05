@@ -6,6 +6,7 @@ export const colorSelector = (state) => state.filters.color
 export const categorySelector = (state) => state.filters.category
 export const priceSelector = (state) => state.filters.price
 export const searchTextSelector = (state) => state.filters.searchText
+export const cartSelector = (state) => state.cart
 
 export const remainProducts = createSelector(
     productListSelector,

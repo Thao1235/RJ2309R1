@@ -15,3 +15,135 @@ input[type='search']::placeholder {
   scale: 1.2;
   cursor: pointer;
 }
+
+.logo {
+  text-decoration: none;
+  color: #212529;
+}
+
+.card-image-middle {
+  vertical-align: middle;
+}
+
+.order-summary {
+  background-color: rgba(0, 0, 0, .2);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.customer-info {
+  background-color: rgba(0, 0, 0, .1);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.form-control {
+  font-size: .9rem !important;
+}
+
+.form-control::placeholder {
+  color: rgba(0, 0, 0, .3) !important;
+  font-style: italic;
+}
+
+.btn-checkout:hover {
+  background-color: #077441 !important;
+  cursor: pointer;
+}
+
+.cart-table>tbody>tr>td {
+  padding: 20px 0px;
+  vertical-align: middle;
+}
+
+.product-image {
+  width: 40%;
+  margin-right: 4px;
+  padding: 0px 5px;
+  filter: alpha(opacity=20)
+}
+
+.btn-remove {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.btn-remove:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.cart-quantity-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  background-color: rgba(0, 0, 0, .4);
+  justify-content: space-between;
+  padding: 4px 10px;
+  border-radius: 15px;
+}
+
+.cart-quantity>span:first-child {
+  cursor: pointer;
+  width: 25px;
+  text-align: center;
+}
+
+.cart-quantity>span:nth-child(2) {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.cart-quantity>span:last-child {
+  cursor: pointer;
+  width: 25px;
+  text-align: center;
+}
+
+.action-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  text-decoration: none;
+  padding: 7px 5px;
+  margin-bottom: 1px;
+}
+
+.active {
+  background-color: rgba(13, 110, 253, .2);
+}
+
+.menu:hover {
+  background-color: rgba(13, 110, 253, .1);
+  text-decoration: underline;
+}
+
+.table-orders>thead>tr>th {
+  padding: 10px 5px;
+  background-color: rgba(13, 110, 253, 1);
+  color: white;
+}
+
+.product-img-sm {
+  width: "10px";
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, .4) !important;
+}
