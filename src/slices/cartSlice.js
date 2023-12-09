@@ -5,28 +5,26 @@ const cartSlice = createSlice({
     initialState: {
         cartInfo: {
             subTotal: 0,
-            shipping:0,
+            shipping: 0,
             total: 0,
             status: 'draft'
         },
         cartDetails: [
 
-        ],
-        customerInfo: {
-            fullname: '',
-            address: '',
-            email: '',
-            mobile: ''
-        },
+        ]
     },
     reducers: {
         addToCart: (state, action) => {
+            // 1. bổ sung action.payload (sản phẩm) và trong cartDetails
+            //     1.1 new Product => bổ sung 
+            //     1.2 exist Product => tăng số lượng lên 1 => tính amount
+            // 2. tính toán subtotal => tính total
             let cartItem = state.cartDetails.find((cartItem) => cartItem.id === action.payload.id)
-            if (cartItem.id){
+            if (cartItem?.id) { //existed
                 cartItem.quantity = Number(cartItem.quantity) + 1
                 cartItem.amount = Number(cartItem.quantity) * cartItem.newPrice
             }
-            else {
+            else { //new
                 state.cartDetails.push({
                     ...action.payload,
                     quantity: 1,
@@ -34,7 +32,7 @@ const cartSlice = createSlice({
                 })
             }
             let newSubTotal = 0;
-            for (let item of state.cartDetails){
+            for (let item of state.cartDetails) {
                 newSubTotal += Number(item.amount)
             }
             state.cartInfo.subTotal = newSubTotal;
@@ -43,22 +41,22 @@ const cartSlice = createSlice({
         incrementQuantity: (state, action) => {
             let cartItem = state.cartDetails.find((cartItem) => cartItem.id === action.payload.id)
             cartItem.quantity = Number(cartItem.quantity) + 1
-            cartItem.amount = Number (cartItem.quantity) * cartItem.newPrice
-            
+            cartItem.amount = Number(cartItem.quantity) * cartItem.newPrice
+
             let newSubTotal = 0;
-            for (let item of state.cartDetails){
+            for (let item of state.cartDetails) {
                 newSubTotal += Number(item.amount)
             }
-            state.cartInfo.subTotal = newSubTotal
+            state.cartInfo.subTotal = newSubTotal;
             state.cartInfo.total = state.cartInfo.subTotal + state.cartInfo.shipping
         },
-        decrementQuantity: (state, action) => {
+        descrementQuantity: (state, action) => {
             let cartItem = state.cartDetails.find((cartItem) => cartItem.id === action.payload.id)
             cartItem.quantity = Number(cartItem.quantity) - 1
-            cartItem.amount = Number (cartItem.quantity) * cartItem.newPrice
-            
+            cartItem.amount = Number(cartItem.quantity) * cartItem.newPrice
+
             let newSubTotal = 0;
-            for (let item of state.cartDetails){
+            for (let item of state.cartDetails) {
                 newSubTotal += Number(item.amount)
             }
             state.cartInfo.subTotal = newSubTotal;
@@ -68,42 +66,33 @@ const cartSlice = createSlice({
             state.cartDetails = state.cartDetails.filter((cartItem) => cartItem.id !== action.payload.id)
 
             let newSubTotal = 0;
-            for (let item of state.cartDetails){
+            for (let item of state.cartDetails) {
                 newSubTotal += Number(item.amount)
             }
             state.cartInfo.subTotal = newSubTotal;
             state.cartInfo.total = state.cartInfo.subTotal + state.cartInfo.shipping
-        },
-        checkoutCart: (state, action) => {
-            state.cartDetails = []
-            state.cartInfo = {
-                subTotal: 0,
-                shipping: 0,
-                total: 0,
-                status: 'draft'
-            }
-        },
+        }
     },
     extraReducers: (builder) => {
-            builder
-                .addCase(checkoutCartThunkAction.pending, (state, action) => {
-    
-                })
-                .addCase(checkoutCartThunkAction.fulfilled, (state, action) => {
-                    state.cartDetails = []
-                    state.cartInfo = {
-                        subTotal: 0,
-                        shipping: 0,
-                        total: 0,
-                        status: 'draft'
-                    }
-                })
+        builder
+            .addCase(checkoutThunkAction.pending, (state, action) => {
+
+            })
+            .addCase(checkoutThunkAction.fulfilled, (state, action) => {
+                state.cartDetails = []
+                state.cartInfo = {
+                    subTotal: 0,
+                    shipping: 0,
+                    total: 0,
+                    status: 'draft'
+                }
+            })
     }
 })
 
-export const checkoutCartThunkAction = createAsyncThunk('cart/checkoutThunkAction', async (data) => {
+export const checkoutThunkAction = createAsyncThunk('cart/checkoutThunkAction', async (data) => {
     let orderRes = await fetch('https://jsonserver-vercel-api.vercel.app/orderList', {
-        method: 'POST',
+        method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
@@ -112,5 +101,4 @@ export const checkoutCartThunkAction = createAsyncThunk('cart/checkoutThunkActio
     let result = await orderRes.json()
     return result;
 })
-
 export default cartSlice;

@@ -35,15 +35,7 @@ input[type='search']::placeholder {
   background-color: rgba(0, 0, 0, .1);
   padding: 5px;
   border-radius: 5px;
-}
-
-.form-control {
-  font-size: .9rem !important;
-}
-
-.form-control::placeholder {
-  color: rgba(0, 0, 0, .3) !important;
-  font-style: italic;
+  margin-top: 4px;
 }
 
 .btn-checkout:hover {
@@ -119,31 +111,40 @@ input[type='search']::placeholder {
   justify-content: center;
 }
 
-.menu {
-  text-decoration: none;
-  padding: 7px 5px;
+.menu{
+  
   margin-bottom: 1px;
+  padding: 7px 2px;
+  text-decoration: none;
+}
+.active{
+  background-color: rgba(117, 186, 255, .5);
 }
 
-.active {
-  background-color: rgba(13, 110, 253, .2);
-}
-
-.menu:hover {
-  background-color: rgba(13, 110, 253, .1);
-  text-decoration: underline;
-}
-
-.table-orders>thead>tr>th {
-  padding: 10px 5px;
-  background-color: rgba(13, 110, 253, 1);
+.order-table>thead>tr>th{
+  background-color: rgb(38, 134, 230);;
   color: white;
+  padding: 10px 5px;
+}
+.order-table>tbody>tr>td{
+  padding: 8px 5px;
 }
 
-.product-img-sm {
-  width: "10px";
+.product-table>thead>tr>th{
+  background-color: rgb(38, 134, 230);;
+  color: white;
+  padding: 10px 5px;
+}
+.product-table>tbody>tr>td{
+  padding: 8px 5px;
 }
 
-.modal {
-  background-color: rgba(0, 0, 0, .4) !important;
+.modal{
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.border-dashed{
+  border: 1px dashed gray;
+  border-radius: 5px;
+  padding: 2px 1px;
 }
